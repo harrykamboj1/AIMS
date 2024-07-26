@@ -28,7 +28,7 @@ const SideNavigationBar = () => {
   if (!mounted) return null;
 
   return (
-    <div className="bg-white p-5 shadow-sm border h-screen">
+    <div className="bg-white p-5 shadow-sm border h-screen cursor-pointer">
       {theme === "dark" && (
         <Image src={"/AIMS.png"} height={50} width={50} alt="logo" shadow-md />
       )}

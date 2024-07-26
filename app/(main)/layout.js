@@ -1,5 +1,6 @@
 import React from 'react'
 import SideNavigationBar from './_components/SideNavigationBar'
+import Header from './_components/Header'
 
 function layout({ children }) {
     return (
@@ -8,6 +9,7 @@ function layout({ children }) {
                 <SideNavigationBar />
             </div>
             <div className='sm:ml-64'>
+                <Header />
                 {children}
             </div>
         </div>
