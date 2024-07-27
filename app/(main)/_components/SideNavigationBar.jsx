@@ -1,6 +1,6 @@
 "use client";
 import { useTheme } from "next-themes";
-import { BadgeCheck, BadgeIcon, BookIcon, BookOpenIcon } from "lucide-react";
+import { BadgeCheck, BookOpenIcon } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
@@ -30,26 +30,20 @@ const SideNavigationBar = () => {
   return (
     <div className="bg-white p-5 shadow-sm border h-screen cursor-pointer">
       {theme === "dark" && (
-        <Image src={"/AIMS.png"} height={50} width={50} alt="logo" shadow-md />
+        <Image src={"/AIMS.png"} height={80} width={170} alt="logo" />
       )}
       {theme === "light" && (
-        <Image
-          src={"/AIMS_LIGHT.png"}
-          height={80}
-          width={170}
-          alt="logo"
-          shadow-md
-        />
+        <Image src={"/AIMS_LIGHT.png"} height={80} width={170} alt="logo" />
       )}
       {theme === "system" && (
-        <Image src={"/AIMS.png"} height={50} width={50} alt="logo" shadow-md />
+        <Image src={"/AIMS.png"} height={80} width={170} alt="logo" />
       )}
 
       <div className="mt-7">
         {menuData.map((item, index) => (
           <div
             className="group flex gap-3 mt-1 p-3 text-[16px] items-center text-gray-900 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all"
-            key={index}
+            key={item.id}
           >
             <item.icon className="group-hover:animate-bounce" />
             <h2>{item.name}</h2>
