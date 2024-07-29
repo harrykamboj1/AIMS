@@ -39,10 +39,10 @@ const CourseList = () => {
           </SelectContent>
         </Select>
       </div>
-      <div>
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-7">
         {courseList.map((item, index) => (
           <div key={index}>
-            <CourseCard />
+            <CourseCard course={item} />
           </div>
         ))}
       </div>

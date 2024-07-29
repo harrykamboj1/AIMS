@@ -6,7 +6,7 @@ const MAIN_URL = process.env.NEXT_PUBLIC_HYGRAPH_MAIN_URL + process.env.NEXT_PUB
 const getCourseList = async () => {
   const query = gql`
     query CourseList {
-  courseLists {
+  courseLists(first: 20, orderBy: createdAt_DESC) {
     author
     name
     id
