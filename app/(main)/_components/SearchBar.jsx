@@ -5,7 +5,7 @@ import React from "react";
 const SearchBar = () => {
   return (
     <div className="p-4 bg-white flex justify-between">
-      <div className="flex gap-2 border p-2 mr-5 rounded-md w-full">
+      <div className="flex gap-2 border p-2 mr-5 rounded-md ">
         <Search className="h-5 w-5" />
         <input
           className="outline-none w-full"

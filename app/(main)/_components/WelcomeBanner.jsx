@@ -3,7 +3,7 @@ import React from "react";
 
 const WelcomeBanner = () => {
   return (
-    <div className="flex gap-5 items-center bg-white rounded-xl p-5">
+    <div className="flex gap-5 items-center bg-white rounded-xl  p-8">
       <Image
         className=""
         src={"/Edu-transformed-2.png"}

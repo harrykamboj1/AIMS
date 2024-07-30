@@ -24,7 +24,7 @@ const CourseList = () => {
   };
 
   return (
-    <div className="p-5 bg-white rounded-lg mt-5">
+    <div className="p-5 bg-white rounded-lg mt-4">
       {/* {Title and filter} */}
       <div className="flex items-center justify-between">
         <h2 className="text-[20px] font-bold text-primary">All Courses</h2>
@@ -39,12 +39,19 @@ const CourseList = () => {
           </SelectContent>
         </Select>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-7">
-        {courseList.map((item, index) => (
-          <div key={index}>
-            <CourseCard course={item} />
-          </div>
-        ))}
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+        {courseList?.length > 0
+          ? courseList.map((item, index) => (
+              <div key={index}>
+                <CourseCard course={item} />
+              </div>
+            ))
+          : [1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+              <div
+                key={index}
+                className="w-full h-[240px] rounded-xl m-2 bg-slate-200 animate-pulse"
+              ></div>
+            ))}
       </div>
     </div>
   );
