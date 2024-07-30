@@ -36,6 +36,24 @@ const getCourseList = async () => {
   return result;
 }
 
+
+const getSideBannerData = async () => {
+  const query = gql`query SideBanner{
+  sideBanners{
+    id
+    name
+    banner{
+      id
+      url
+    }
+    url
+  }
+}`
+  const result = await request(MAIN_URL, query);
+  return result;
+}
+
 export default {
-  getCourseList
+  getCourseList,
+  getSideBannerData
 }

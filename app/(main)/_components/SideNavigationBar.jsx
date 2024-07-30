@@ -3,23 +3,28 @@ import { useTheme } from "next-themes";
 import { BadgeCheck, BookOpenIcon } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menuData = [
   {
     id: 1,
     name: "All Courses",
     icon: BookOpenIcon,
+    path: "/courses",
   },
   {
     id: 2,
     name: "Membership",
     icon: BadgeCheck,
+    path: "/membership",
   },
 ];
 
 const SideNavigationBar = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const path = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -41,13 +46,17 @@ const SideNavigationBar = () => {
 
       <div className="mt-7">
         {menuData.map((item, index) => (
-          <div
-            className="group flex gap-3 mt-1 p-3 text-[16px] items-center text-gray-900 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all"
-            key={item.id}
-          >
-            <item.icon className="group-hover:animate-bounce" />
-            <h2>{item.name}</h2>
-          </div>
+          <Link href={item.path} key={item.id}>
+            <div
+              className={`group flex gap-3 mt-1 p-3 text-[16px] items-center text-gray-900 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all ${
+                path.includes(item.path) && "bg-primary text-white"
+              }`}
+              key={item.id}
+            >
+              <item.icon className="group-hover:animate-bounce" />
+              <h2>{item.name}</h2>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

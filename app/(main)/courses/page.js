@@ -1,6 +1,7 @@
 import React from 'react'
 import WelcomeBanner from '../_components/WelcomeBanner'
 import CourseList from '../_components/CourseList'
+import SideBanner from '../_components/SideBanner'
 
 function Course() {
     return (
@@ -9,8 +10,8 @@ function Course() {
                 <WelcomeBanner />
                 <CourseList />
             </div>
-            <div>
-                Right
+            <div className='p-5 bg-white rounded-xl'>
+                <SideBanner />
             </div>
         </div>
     )
