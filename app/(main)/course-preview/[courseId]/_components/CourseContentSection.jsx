@@ -4,12 +4,12 @@ import React, { useState } from "react";
 const CourseContentSection = ({ courseInfo }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="p-3 bg-white rounded-sm">
+    <div className="p-3 bg-white rounded-sm mt-3">
       <h2>Content</h2>
       {courseInfo?.chapter?.map((item, index) => (
         <div key={index}>
           <h2
-            className={`p-2 text-[14px] flex justify-between items-center border rounded-md  px-4 cursor-pointer hover:bg-gray-200 hover:text-gray-500  ${
+            className={`mt-2 p-2 text-[14px] flex justify-between items-center border rounded-md  px-4 cursor-pointer hover:bg-gray-200 hover:text-gray-500  ${
               activeIndex == index && "bg-primary text-white"
             }`}
           >
