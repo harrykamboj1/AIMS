@@ -25,6 +25,7 @@ const getCourseList = async () => {
         }
       }
     }
+    slug
     sourceCode
     totalChapters
     tag
@@ -53,7 +54,42 @@ const getSideBannerData = async () => {
   return result;
 }
 
+
+const getCourseById = async (courseId) => {
+  const query = gql`
+  query MyQuery {
+  courseList(where: {slug: "`+ courseId + `"}) {
+    author
+    banner {
+      url
+    }
+    chapter {
+      ... on Chapter {
+        id
+        name
+        video {
+          url
+        }
+      }
+    }
+    demoUrl
+    description
+    totalChapters
+    youtubeUrl
+    free
+    id
+    name
+    slug
+    sourceCode
+    tag
+  }
+}`
+  const result = await request(MAIN_URL, query);
+  return result;
+}
+
 export default {
   getCourseList,
-  getSideBannerData
+  getSideBannerData,
+  getCourseById
 }

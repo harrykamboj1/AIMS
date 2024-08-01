@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import CourseCard from "./CourseCard";
+import Link from "next/link";
 
 const CourseList = () => {
   const [courseList, setCourseList] = useState([]);
@@ -42,9 +43,11 @@ const CourseList = () => {
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
         {courseList?.length > 0
           ? courseList.map((item, index) => (
-              <div key={index}>
-                <CourseCard course={item} />
-              </div>
+              <Link key={index} href={"/course-preview/" + item.slug}>
+                <div>
+                  <CourseCard course={item} />
+                </div>
+              </Link>
             ))
           : [1, 2, 3, 4, 5, 6, 7].map((item, index) => (
               <div
