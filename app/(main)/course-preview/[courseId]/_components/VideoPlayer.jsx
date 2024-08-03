@@ -5,7 +5,7 @@ import {
   StepForward,
   StepForwardIcon,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 
 const VideoPlayer = ({ videoUrl, poster }) => {
@@ -32,12 +32,29 @@ const VideoPlayer = ({ videoUrl, poster }) => {
     setShowPopup(true);
     setTimeout(() => setShowPopup(false), 1000); // Hide popup after 1 second
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowRight") {
+        handleForward();
+      } else if (event.key === "ArrowLeft") {
+        handleBackward();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="relative inline-block">
       <video
         ref={videoRef}
         className="rounded-sm"
         width={1000}
+        key={videoUrl}
         height={250}
         controls
         poster={poster}
