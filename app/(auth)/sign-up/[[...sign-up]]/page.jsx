@@ -17,7 +17,7 @@ export default function Page() {
             <SignUp path="/sign-up" />
           </ClerkLoaded>
           <ClerkLoading>
-            <Loader2 className="animate-spin text-muted-foreground" />
+            <Loader2 className="animate-spin text-white" />
           </ClerkLoading>
         </div>
       </div>

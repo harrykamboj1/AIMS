@@ -4,9 +4,13 @@ import CourseVideoDescription from "./_components/CourseVideoDescription";
 import api from "@/utils/api";
 import CourseEnrollSection from "./_components/CourseEnrollSection";
 import CourseContentSection from "./_components/CourseContentSection";
+import { useUser } from "@clerk/nextjs";
 
 const CoursePreview = ({ params }) => {
+  const { user } = useUser();
   const [courseInfo, setCourseInfo] = useState();
+  const [isUserAlreadyEnrolled, setIsUserAlreadyEnrolled] = useState(false);
+
   useEffect(() => {
     params && getCourseInfoById();
   }, [params]);
@@ -14,9 +18,29 @@ const CoursePreview = ({ params }) => {
   // used to get Course data by slug name
   const getCourseInfoById = () => {
     api.getCourseById(params?.courseId).then((resp) => {
-      console.log(resp);
       setCourseInfo(resp);
     });
+  };
+
+  useEffect(() => {
+    if (courseInfo && user) {
+      console.log("enter");
+      checkUserEnrolledToCourse();
+    }
+  }, [courseInfo, user]);
+
+  const checkUserEnrolledToCourse = () => {
+    api
+      .checkUserEnrolledToCourse(
+        courseInfo?.courseList?.slug,
+        user?.primaryEmailAddress?.emailAddress
+      )
+      .then((resp) => {
+        if (resp?.userEnrollCourses[0]?.id) {
+          console.log(resp);
+          setIsUserAlreadyEnrolled(true);
+        }
+      });
   };
   return (
     courseInfo && (
@@ -25,7 +49,10 @@ const CoursePreview = ({ params }) => {
           <CourseVideoDescription courseInfo={courseInfo?.courseList} />
         </div>
         <div>
-          <CourseEnrollSection />
+          <CourseEnrollSection
+            courseInfo={courseInfo?.courseList}
+            isUserAlreadyEnrolled={isUserAlreadyEnrolled}
+          />
           <CourseContentSection courseInfo={courseInfo?.courseList} />
         </div>
       </div>

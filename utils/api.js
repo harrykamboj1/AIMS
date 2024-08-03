@@ -88,8 +88,44 @@ const getCourseById = async (courseId) => {
   return result;
 }
 
+const enrollToCourse = async (courseId, userEmail) => {
+
+  const query = gql`mutation MyMutation {
+  createUserEnrollCourse(
+    data: {courseId: "${courseId}", courseList: {connect: {slug: "${courseId}"}}, userEmail: "${userEmail}"}
+  ) {
+    id
+  }
+  publishManyUserEnrollCoursesConnection {
+    edges {
+      node {
+        id
+      }
+    }
+  }
+}
+`
+
+  const result = await request(MAIN_URL, query);
+  return result;
+}
+
+const checkUserEnrolledToCourse = async (courseId, email) => {
+  const query = gql`query MyQuery {
+  userEnrollCourses(where: {courseId: "${courseId}", userEmail: "${email}"}) {
+    id
+  }
+}
+`
+  const result = await request(MAIN_URL, query);
+  return result;
+
+}
+
 export default {
   getCourseList,
   getSideBannerData,
-  getCourseById
+  getCourseById,
+  enrollToCourse,
+  checkUserEnrolledToCourse
 }

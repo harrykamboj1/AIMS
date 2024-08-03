@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { BellDot, Search } from "lucide-react";
+import Link from "next/link";
 import React from "react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
-const SearchBar = () => {
+const SearchBar = ({ user, isLoaded }) => {
   return (
     <div className="p-4 bg-white flex justify-between">
       <div className="flex gap-2 border p-2 mr-5 rounded-md ">
@@ -15,7 +17,18 @@ const SearchBar = () => {
       </div>
       <div className="flex items-center gap-4">
         <BellDot className="text-gray-500 cursor-pointer" />
-        <Button>Get Started</Button>
+        {isLoaded && user ? (
+          <div>
+            <SignedIn>
+              {/* Mount the UserButton component */}
+              <UserButton />
+            </SignedIn>
+          </div>
+        ) : (
+          <Link href={"/sign-in"}>
+            <Button>Get Started</Button>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import VideoPlayer from "./VideoPlayer";
 import Markdown from "react-markdown";
 
 const CourseVideoDescription = ({ courseInfo }) => {
-  console.log(courseInfo);
   return (
     <div>
       <h2 className="text-[20px] font-semibold">{courseInfo?.name}</h2>

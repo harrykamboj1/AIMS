@@ -1,27 +1,36 @@
 "use client";
 import { useTheme } from "next-themes";
-import { BadgeCheck, BookOpenIcon } from "lucide-react";
+import { BadgeCheck, BookOpenIcon, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const menuData = [
-  {
-    id: 1,
-    name: "All Courses",
-    icon: BookOpenIcon,
-    path: "/courses",
-  },
-  {
-    id: 2,
-    name: "Membership",
-    icon: BadgeCheck,
-    path: "/membership",
-  },
-];
+import { useUser } from "@clerk/nextjs";
 
 const SideNavigationBar = () => {
+  const { user } = useUser();
+  const menuData = [
+    {
+      id: 1,
+      name: "Dashboard",
+      icon: LayoutDashboard,
+      path: "/dashboard",
+      auth: user,
+    },
+    {
+      id: 2,
+      name: "All Courses",
+      icon: BookOpenIcon,
+      path: "/courses",
+      auth: true,
+    },
+    // {
+    //   id: 3,
+    //   name: "Membership",
+    //   icon: BadgeCheck,
+    //   path: "/membership",
+    // },
+  ];
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const path = usePathname();
