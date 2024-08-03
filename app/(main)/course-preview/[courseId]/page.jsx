@@ -9,7 +9,7 @@ import { useUser } from "@clerk/nextjs";
 const CoursePreview = ({ params }) => {
   const { user } = useUser();
   const [courseInfo, setCourseInfo] = useState();
-  const [isUserAlreadyEnrolled, setIsUserAlreadyEnrolled] = useState(false);
+  const [isUserAlreadyEnrolled, setIsUserAlreadyEnrolled] = useState();
 
   useEffect(() => {
     params && getCourseInfoById();
@@ -37,8 +37,7 @@ const CoursePreview = ({ params }) => {
       )
       .then((resp) => {
         if (resp?.userEnrollCourses[0]?.id) {
-          console.log(resp);
-          setIsUserAlreadyEnrolled(true);
+          setIsUserAlreadyEnrolled(resp?.userEnrollCourses[0]?.id);
         }
       });
   };
@@ -53,7 +52,10 @@ const CoursePreview = ({ params }) => {
             courseInfo={courseInfo?.courseList}
             isUserAlreadyEnrolled={isUserAlreadyEnrolled}
           />
-          <CourseContentSection courseInfo={courseInfo?.courseList} />
+          <CourseContentSection
+            courseInfo={courseInfo?.courseList}
+            isUserAlreadyEnrolled={isUserAlreadyEnrolled}
+          />
         </div>
       </div>
     )

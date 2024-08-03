@@ -32,7 +32,7 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
   return (
     <div className="p-3 text-center rounded-sm bg-primary ">
       <h2 className="text-[22px] font-bold text-white">Enroll to the Course</h2>
-      {user && (membership || courseInfo?.free) ? (
+      {user && (membership || courseInfo?.free) && !isUserAlreadyEnrolled ? (
         <div className="flex flex-col gap-3 mt-3">
           <h2 className="text-white font-light">
             Enroll Now to Start Learning
@@ -56,13 +56,26 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
           </Link>
         </div>
       ) : (
+        !isUserAlreadyEnrolled && (
+          <div className="flex flex-col gap-3 mt-3">
+            <h2 className="text-white font-light">
+              Buy Course and start Learning
+            </h2>
+            <Button className="bg-white text-primary hover:bg-white hover:text-primary">
+              Buy Course
+            </Button>
+          </div>
+        )
+      )}
+
+      {isUserAlreadyEnrolled && (
         <div className="flex flex-col gap-3 mt-3">
-          <h2 className="text-white font-light">
-            Buy Course and start Learning
-          </h2>
-          <Button className="bg-white text-primary hover:bg-white hover:text-primary">
-            Buy Course
-          </Button>
+          <h2 className="text-white font-light">Continue Learning</h2>
+          <Link href={`/watch-course/${isUserAlreadyEnrolled}`}>
+            <Button className="bg-white text-primary hover:bg-white hover:text-primary">
+              Continue
+            </Button>
+          </Link>
         </div>
       )}
     </div>
