@@ -6,17 +6,17 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const SearchBar = ({ user, isLoaded }) => {
   return (
-    <div className="p-4 bg-white flex justify-between">
-      <div className="flex gap-2 border p-2 mr-5 rounded-md ">
-        <Search className="h-5 w-5" />
+    <div className="p-4 bg-white flex justify-end">
+      {/* <div className="flex gap-2 border p-2 mr-5 rounded-md ">
+        {/* <Search className="h-5 w-5" />
         <input
           className="outline-none w-full"
           type="text"
           placeholder="Search Courses..."
-        />
-      </div>
+        /> */}
+      {/* </div> */}
       <div className="flex items-center gap-4">
-        <BellDot className="text-gray-500 cursor-pointer" />
+        {/* <BellDot className="text-gray-500 cursor-pointer" /> */}
         {isLoaded && user ? (
           <div>
             <SignedIn>
