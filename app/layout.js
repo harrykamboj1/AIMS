@@ -19,14 +19,14 @@ export default function RootLayout({ children }) {
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className} >
 
-          <ThemeProvider
+          {/* <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
-            disableTransitionOnChange
-          >{children}
-            <Toaster />
-          </ThemeProvider>
+            disableTransitionOnChange */}
+          {children}
+          <Toaster />
+          {/* </ThemeProvider> */}
         </body>
       </html>
     </ClerkProvider>

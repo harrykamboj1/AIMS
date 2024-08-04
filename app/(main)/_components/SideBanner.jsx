@@ -13,7 +13,6 @@ const SideBanner = () => {
 
   const getBannerData = () => {
     api.getSideBannerData().then((resp) => {
-      console.log(resp);
       setBannerData(resp.sideBanners);
     });
   };

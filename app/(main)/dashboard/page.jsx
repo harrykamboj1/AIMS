@@ -19,7 +19,6 @@ const Dashboard = () => {
     api
       .getInProgressCourseList(user?.primaryEmailAddress.emailAddress)
       .then((resp) => {
-        console.log(resp.userEnrollCourses);
         setInProgressList(resp.userEnrollCourses);
       });
   };

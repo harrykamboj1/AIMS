@@ -24,7 +24,6 @@ const CoursePreview = ({ params }) => {
 
   useEffect(() => {
     if (courseInfo && user) {
-      console.log("enter");
       checkUserEnrolledToCourse();
     }
   }, [courseInfo, user]);

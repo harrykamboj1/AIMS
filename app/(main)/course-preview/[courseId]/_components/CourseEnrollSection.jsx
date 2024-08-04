@@ -11,15 +11,12 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
   const { user } = useUser();
   const router = useRouter();
 
-  useEffect(() => {
-    console.log("isUserAlreadyEnrolled", isUserAlreadyEnrolled);
-  }, [isUserAlreadyEnrolled]);
+  useEffect(() => {}, [isUserAlreadyEnrolled]);
 
   const onEnrollCourse = () => {
     api
       .enrollToCourse(courseInfo?.slug, user?.primaryEmailAddress?.emailAddress)
       .then((resp) => {
-        console.log(resp);
         if (resp) {
           router.push(`/watch-course/${resp.createUserEnrollCourse.id}`);
           toast("User Enrolled Successfull", {
