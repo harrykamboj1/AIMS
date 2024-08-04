@@ -1,10 +1,9 @@
 "use client";
-import { useTheme } from "next-themes";
 import { BadgeCheck, BookOpenIcon, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 
 const SideNavigationBar = () => {
@@ -31,46 +30,13 @@ const SideNavigationBar = () => {
     //   path: "/membership",
     // },
   ];
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const path = usePathname();
-  const router = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   return (
     <div className="bg-white p-5 shadow-sm border h-screen cursor-pointer">
-      {theme === "dark" && (
-        <Image
-          src={"/AIMS.png"}
-          height={80}
-          width={170}
-          alt="logo"
-          onClick={router.push("/")}
-        />
-      )}
-      {theme === "light" && (
-        <Image
-          src={"/AIMS_LIGHT.png"}
-          height={80}
-          width={170}
-          alt="logo"
-          onClick={router.push("/")}
-        />
-      )}
-      {theme === "system" && (
-        <Image
-          src={"/AIMS.png"}
-          height={80}
-          width={170}
-          alt="logo"
-          onClick={router.push("/")}
-        />
-      )}
+      <Link href={"/"}>
+        <Image src={"/AIMS_LIGHT.png"} height={80} width={170} alt="logo" />
+      </Link>
 
       <div className="mt-7">
         {menuData.map((item, index) => (

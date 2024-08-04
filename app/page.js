@@ -14,7 +14,7 @@ export default function Home() {
     } else {
       isLoaded && router.push("/courses")
     }
-  })
+  }, [])
   redirect("/courses")
   return (
     <div>
