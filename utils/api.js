@@ -130,6 +130,12 @@ const getUserEnrolledCourseDetails = async (courseId, email) => {
     courseId
     id
     userEmail
+    completedChapter {
+      ... on CompletedChapter {
+        id
+        chapterId
+      }
+    }
     courseList {
       banner {
         url
@@ -163,11 +169,30 @@ const getUserEnrolledCourseDetails = async (courseId, email) => {
 
 }
 
+const markChapterCompleted = async (chapterId, courseId) => {
+  const query = gql`
+  mutation MyMutation {
+  updateUserEnrollCourse(
+    data: {completedChapter: {create: {CompletedChapter: {data: {chapterId: "${chapterId}"}}}}}
+    where: {id: "${courseId}"}
+  ){
+   id 
+  }
+  publishUserEnrollCourse(where: {id: "${courseId}"}) {
+    id
+  }
+}
+`
+  const result = await request(MAIN_URL, query);
+  return result;
+}
+
 export default {
   getCourseList,
   getSideBannerData,
   getCourseById,
   enrollToCourse,
   checkUserEnrolledToCourse,
-  getUserEnrolledCourseDetails
+  getUserEnrolledCourseDetails,
+  markChapterCompleted
 }

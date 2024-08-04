@@ -4,11 +4,13 @@ import { useUser } from "@clerk/nextjs";
 import React, { useEffect, useState } from "react";
 import CourseVideoDescription from "../../course-preview/[courseId]/_components/CourseVideoDescription";
 import CourseContentSection from "../../course-preview/[courseId]/_components/CourseContentSection";
+import { toast } from "sonner";
 
 const WatchCourse = ({ params }) => {
   const { user } = useUser();
   const [courseInfo, setCourseInfo] = useState([]);
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
+  const [completedChapter, setCompletedChapter] = useState([]);
 
   useEffect(() => {
     params && user && getUserEnrolledCourseDetails();
@@ -22,7 +24,17 @@ const WatchCourse = ({ params }) => {
       )
       .then((resp) => {
         setCourseInfo(resp.userEnrollCourses[0].courseList);
+        setCompletedChapter(resp.userEnrollCourses[0].completedChapter);
       });
+  };
+
+  const markChapterCompleted = (chapterId) => {
+    api.markChapterCompleted(chapterId, params.enrollId).then((resp) => {
+      if (resp) {
+        toast("Chapter Mark as Completed!");
+        getUserEnrolledCourseDetails();
+      }
+    });
   };
 
   return (
@@ -33,7 +45,7 @@ const WatchCourse = ({ params }) => {
             courseInfo={courseInfo}
             activeChapterIndex={activeChapterIndex}
             watchMode={true}
-            setChapterCompleted={(chapterId) => console.log(chapterId)}
+            setChapterCompleted={(chapterId) => markChapterCompleted(chapterId)}
           />
         </div>
         <div>
@@ -41,6 +53,7 @@ const WatchCourse = ({ params }) => {
             courseInfo={courseInfo}
             isUserAlreadyEnrolled={true}
             watchMode={true}
+            completedChapter={completedChapter}
             setActiveChapterIndex={(index) => setActiveChapterIndex(index)}
           />
         </div>
