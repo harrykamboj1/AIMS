@@ -62,7 +62,7 @@ const CourseEnrollSection = ({ courseInfo, isUserAlreadyEnrolled }) => {
               Buy Course and start Learning
             </h2>
             <Button className="bg-white text-primary hover:bg-white hover:text-primary">
-              Buy Course
+              Buy Course at {courseInfo?.price}
             </Button>
           </div>
         )

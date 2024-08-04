@@ -22,10 +22,17 @@ const CourseCard = ({ course }) => {
         ) : (
           <div className="flex gap-2">
             <Image src={"/chapter.png"} alt="chapter" width={20} height={20} />
-            <h2 className="text-[14px] text-gray-400">Chapters</h2>
+            <h2 className="text-[14px] text-gray-400">
+              {course?.totalChapters} Chapters
+            </h2>
           </div>
         )}
-        <h2 className="text-[14px]">{course?.free ? "Free" : "Paid"}</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-[14px] text-gray-500">
+            {course?.free ? "Free" : "Paid"}
+          </h2>
+          <h2 className="text-[14px] text-gray-500">{course?.price}</h2>
+        </div>
       </div>
     </div>
   );

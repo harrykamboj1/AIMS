@@ -19,7 +19,7 @@ const CourseContentSection = ({
             } ${isUserAlreadyEnrolled && "hover:bg-primary hover:text-white"}`}
             onClick={() => {
               watchMode && setActiveChapterIndex(index);
-              setActiveIndex(index);
+              watchMode && setActiveIndex(index);
             }}
           >
             {index + 1}. {item.name}

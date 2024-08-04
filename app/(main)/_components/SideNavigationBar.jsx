@@ -4,7 +4,7 @@ import { BadgeCheck, BookOpenIcon, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 
 const SideNavigationBar = () => {
@@ -34,6 +34,7 @@ const SideNavigationBar = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const path = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -44,13 +45,31 @@ const SideNavigationBar = () => {
   return (
     <div className="bg-white p-5 shadow-sm border h-screen cursor-pointer">
       {theme === "dark" && (
-        <Image src={"/AIMS.png"} height={80} width={170} alt="logo" />
+        <Image
+          src={"/AIMS.png"}
+          height={80}
+          width={170}
+          alt="logo"
+          onClick={router.push("/")}
+        />
       )}
       {theme === "light" && (
-        <Image src={"/AIMS_LIGHT.png"} height={80} width={170} alt="logo" />
+        <Image
+          src={"/AIMS_LIGHT.png"}
+          height={80}
+          width={170}
+          alt="logo"
+          onClick={router.push("/")}
+        />
       )}
       {theme === "system" && (
-        <Image src={"/AIMS.png"} height={80} width={170} alt="logo" />
+        <Image
+          src={"/AIMS.png"}
+          height={80}
+          width={170}
+          alt="logo"
+          onClick={router.push("/")}
+        />
       )}
 
       <div className="mt-7">

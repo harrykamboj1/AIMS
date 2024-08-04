@@ -11,6 +11,7 @@ const getCourseList = async () => {
     name
     id
     free
+    price
     description
     demoUrl
     banner {
@@ -77,6 +78,7 @@ const getCourseById = async (courseId) => {
     totalChapters
     youtubeUrl
     free
+    price
     id
     name
     slug
