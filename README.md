@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AIMS Courses Official Website
 
-## Getting Started
+![AIMS](https://github.com/user-attachments/assets/4d73e860-9902-4b70-b79b-ec95f38795af)
 
-First, run the development server:
+Welcome to the official repository for the AIMS Courses website. This platform is designed to offer comprehensive courses on various languages and proficiency exams, including IELTS, PTE, and French. Currently, the website is under development and will be live soon.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Description](#description)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Description
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+AIMS Courses is dedicated to providing top-notch educational resources and courses for language proficiency exams and language learning. Our courses include:
 
-## Learn More
+- **IELTS**: International English Language Testing System
+- **PTE**: Pearson Test of English
+- **French**: Comprehensive French language courses
 
-To learn more about Next.js, take a look at the following resources:
+The website is in the development phase, and we aim to launch it soon with a user-friendly interface and a robust backend to support our diverse range of courses.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The AIMS Courses website is built using the following technologies:
 
-## Deploy on Vercel
+- **Next.js**: A powerful React framework for server-side rendering and generating static websites.
+- **Hygraph**: A headless CMS for managing and delivering content.
+- **Clerk**: A user management solution for handling authentication and user profiles.
+- **shadcn/ui**: A collection of UI components for building a consistent and modern user interface.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Installation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To run this project locally, follow these steps:
+
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/aims-courses.git
+    cd aims-courses
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Set up environment variables**:
+    Create a `.env` file in the root directory and add the necessary environment variables as specified in `.env.example`.
+
+4. **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+5. Open your browser and navigate to `http://localhost:3000` to see the application in action.
+
+## Usage
+
+Once the website is live, users will be able to:
+
+- Browse available courses
+- Sign up for courses and track progress
+- Access course materials and resources
+- Take practice tests and quizzes
+
+## Contributing
+
+We welcome contributions from the community! If you would like to contribute, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/YourFeature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add YourFeature'`)
+5. Push to the branch (`git push origin feature/YourFeature`)
+6. Open a Pull Request
+
+Please make sure to update tests as appropriate.
+
+Thank you for your interest in AIMS Courses! Stay tuned for our launch and join us in our mission to provide quality education.
+
+
